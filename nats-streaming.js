@@ -18,7 +18,7 @@ module.exports = function(RED) {
             var durableSub = stan.subscribe(config.topic, opts);
             durableSub.on('message', function(msg) {
                 console.log("message ready");
-                node.send(msg);
+                node.send(msg.getData());
             });
 
             this.on('close', function() {
