@@ -16,9 +16,12 @@
     "url": "https://github.com/camen6ert/node-red-nats-streaming/issues"
   },
   "homepage": "https://github.com/camen6ert/node-red-nats-streaming#readme",
-  "node-red" : {
+  "node-red": {
     "nodes": {
-      "nats-streaming": "nats-streaming.js"
+      "nats-streaming-sub": "nats-streaming.js"
     }
+  },
+  "dependencies": {
+    "nats-streaming": "0.0.0-alpha"
   }
 }
