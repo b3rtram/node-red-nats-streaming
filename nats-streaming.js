@@ -13,8 +13,11 @@ module.exports = function(RED) {
             opts.setDeliverAllAvailable();
             opts.setDurableName(config.durableName);
 
+            console.log("connection ready")
+
             var durableSub = stan.subscribe(config.topic, opts);
             durableSub.on('message', function(msg) {
+                console.log("message ready");
                 node.send(msg);
             });
 
