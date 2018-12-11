@@ -1,0 +1,24 @@
+{
+  "name": "red-nats-streaming",
+  "version": "0.0.2",
+  "description": "",
+  "main": "nats-streaming.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camen6ert/node-red-nats-streaming.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camen6ert/node-red-nats-streaming/issues"
+  },
+  "homepage": "https://github.com/camen6ert/node-red-nats-streaming#readme",
+  "node-red" : {
+    "nodes": {
+      "nats-streaming": "nats-streaming.js"
+    }
+  }
+}
