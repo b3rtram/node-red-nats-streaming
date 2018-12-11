@@ -22,6 +22,7 @@
     }
   },
   "dependencies": {
-    "nats-streaming": "0.0.0-alpha"
+    "nats-streaming": "0.0.0-alpha",
+    "node-nats-streaming": "0.0.51"
   }
 }
