@@ -3,17 +3,17 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, config);
         var node = this;
 
-        var servers = ['nats://ws003176:4242'];
+        var servers = ['nats://'+config.host+':'+config.port];
 
-        var stan = require('node-nats-streaming').connect('nats_cluster', 'clientId', { 'servers': servers, 'user': admin, 'pass': 'admin', 'encoding': 'binary', 'verbose': true })
+        var stan = require('node-nats-streaming').connect(config.clusterId, config.clientId, { 'servers': servers, 'user': config.user, 'pass': config.password, 'encoding': 'binary', 'verbose': true })
 
         stan.on('connect', function() {
 
             let opts = stan.subscriptionOptions();
             opts.setDeliverAllAvailable();
-            opts.setDurableName('durable1');
+            opts.setDurableName(config.durableName);
 
-            var durableSub = stan.subscribe('foo', opts);
+            var durableSub = stan.subscribe(config.topic, opts);
             durableSub.on('message', function(msg) {
                 node.send(msg);
             });
