@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "nats-streaming": "0.0.0-alpha",
-    "node-nats-streaming": "0.0.51"
+    "node-nats-streaming": "0.0.51",
+    "uuid": "^3.3.2"
   }
 }

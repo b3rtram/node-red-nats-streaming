@@ -3,9 +3,11 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, config);
         var node = this;
 
+        var uuid = require('uuid/v1');
+
         var servers = ['nats://'+config.host+':'+config.port];
 
-        var stan = require('node-nats-streaming').connect(config.clusterId, config.clientId, { 'servers': servers, 'user': config.user, 'pass': config.password, 'encoding': 'binary', 'verbose': true })
+        var stan = require('node-nats-streaming').connect(config.clusterId, uuid(), { 'servers': servers, 'user': config.user, 'pass': config.password, 'encoding': 'binary', 'verbose': true })
 
         stan.on('connect', function() {
 
@@ -27,8 +29,10 @@ module.exports = function(RED) {
                     stan.close();
                 }
             });
+        });
 
-
+        stan.on('error', function(err) {
+            node.warn(err)
         });
     
     }
